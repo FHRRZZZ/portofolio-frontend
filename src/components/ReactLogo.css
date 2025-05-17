@@ -1,0 +1,94 @@
+.react-native-logo {
+  stroke: #61dafb;
+  fill: none;
+  animation: logo-scale 3s ease-in-out infinite alternate;
+  cursor: pointer;
+}
+
+.react-logo {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  display: block;
+  overflow: visible;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+.orbit {
+  stroke-width: 4;
+  animation: orbit-rotate 6s linear infinite;
+  transform-origin: 128px 128px;
+}
+
+.orbit2 {
+  animation-delay: 2s;
+}
+
+.orbit3 {
+  animation-delay: 4s;
+}
+
+.electron {
+  fill: #61dafb;
+  animation: electron-rotate 6s linear infinite;
+  transform-origin: 128px 128px;
+}
+
+.electron1 {
+  animation-name: electron-rotate1;
+}
+.electron2 {
+  animation-name: electron-rotate2;
+  animation-delay: 2s;
+}
+.electron3 {
+  animation-name: electron-rotate3;
+  animation-delay: 4s;
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes electron-rotate1 {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+@keyframes electron-rotate2 {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+@keyframes electron-rotate3 {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+@keyframes logo-scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
