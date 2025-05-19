@@ -69,13 +69,14 @@ function Carousel() {
                 </div>
                 <div className="card">
                   <div className="icon">
-                    <img src="/static/lara.svg" alt="Laravel Logo" title="Laravel" />
+                    <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel Logo" title="Laravel" width="64" height="64" />
+
                   </div>
                   <div className="text">Laravel</div>
                 </div>
                 <div className="card">
                   <div className="icon">
-                    <img src="/static/tail.png" width="40" height="10" alt="Tailwind Logo" title="Tailwind" />
+                    <img src="https://unpkg.com/simple-icons@v8/icons/tailwindcss.svg" alt="Tailwind CSS Logo" title="Tailwind CSS" width="64" height="64" />
                   </div>
                   <div className="text">Tailwind</div>
                 </div>
