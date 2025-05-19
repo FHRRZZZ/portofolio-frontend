@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import ReactLogo from "./components/ReactLogo";
-import { RiNextjsFill } from "react-icons/ri";
-import { FaLaravel } from "react-icons/fa";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { FaBootstrap } from "react-icons/fa";
-import { FaPython } from "react-icons/fa";
-import { FaFlutter } from "react-icons/fa6";
-import { DiDjango } from "react-icons/di";
-import { SiFlask } from "react-icons/si";
-import { IoLogoJavascript } from "react-icons/io";
-import { DiPhp } from "react-icons/di";
-import { FaDartLang } from "react-icons/fa6";
-import { FaJava } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
-import { IoLogoVue } from "react-icons/io5";
+import Carousel from "./components/Carousel";
+
 
 const projectImages = [
   {
@@ -112,83 +100,12 @@ export default function App() {
       </section>
 
       <section className="skills" id="skills">
-        <h3 className="skills-title">Skills</h3>
-        <div className="skills-container">
-          <div className="skill-card">
-            <i className="skill-icon"><FaPython/></i>
-            <h4 className="skill-title">Pyton</h4>
-            <p className="skill-description">Backend Language</p>
-          </div>
-          <div className="skill-card">
-            <i className="skill-icon"><IoLogoJavascript/></i>
-            <h4 className="skill-title">JavaScript</h4>
-            <p className="skill-description">Frontend Language</p>
-          </div>
-          <div className="skill-card">
-            <i className="skill-icon"><DiPhp/></i>
-            <h4 className="skill-title">php</h4>
-            <p className="skill-description">Backend Language</p>
-          </div>
-          <div className="skill-card">
-            <i className="skill-icon"><FaDartLang/></i>
-            <h4 className="skill-title">Dart</h4>
-            <p className="skill-description">Frontend/Backend </p>
-          </div>
-          <div className="skill-card">
-            <i className="skill-icon"><FaJava/></i>
-            <h4 className="skill-title">Java</h4>
-            <p className="skill-description">Backend Language</p>
-          </div>
-          <div className="skill-card">
-            <i className="skill-icon"><SiTypescript/></i>
-            <h4 className="skill-title">TypeScript</h4>
-            <p className="skill-description">Frontend Language</p>
-          </div>
-        </div>
+        <Carousel/>
       </section>
-
-      <section className="framework-section" id="FrameWork">
-        <h3 className="framework-title">Frameworks</h3>
-        <div className="framework-container">
-          <div className="framework-card">
-            <FaLaravel className="framework-icon" />
-            <span>Laravel Jetsream</span>
-          </div>
-          <div className="framework-card">
-            <RiNextjsFill className="framework-icon" />
-            <span>Next.Js</span>
-          </div>
-          <div className="framework-card">
-            <RiTailwindCssFill className="framework-icon" />
-            <span>Tailwind</span>
-          </div>
-          <div className="framework-card">
-            <FaBootstrap className="framework-icon" />
-            <span>Bootstrap</span>
-          </div>
-          <div className="framework-card">
-            <IoLogoVue className="framework-icon" />
-            <span>Vue.js</span>
-          </div>
-          <div className="framework-card">
-            <FaFlutter className="framework-icon" />
-            <span>Flutter</span>
-          </div>
-          <div className="framework-card">
-            <DiDjango className="framework-icon" />
-            <span>Django</span>
-          </div>
-          <div className="framework-card">
-            <SiFlask className="framework-icon" />
-            <span>Flask Python</span>
-          </div>
-        </div>
-      </section>
-
 
       <section className="projects" id="projects">
         <h3>Projects</h3>
-        <div className="carousel">
+        <div className="carousel2">
           <div className="carousel-card">
             <img
               src={projectImages[currentIndex].img}
@@ -216,5 +133,6 @@ export default function App() {
         <p>&copy;Fhrrzz. All rights reserved.</p>
       </footer>
     </div>
+    
   );
 }

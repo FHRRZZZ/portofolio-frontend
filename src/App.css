@@ -1,4 +1,21 @@
 /* Container dasar + dark/light mode */
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   transition: background-color 0.5s ease, color 0.5s ease;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -28,6 +45,20 @@
   margin-top: -30px;
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
 
 .logo {
   font-size: 1.8rem;
@@ -42,6 +73,8 @@
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-end;
 }
 
 .hero {
@@ -55,15 +88,23 @@
   flex-wrap: wrap; /* supaya responsif di layar kecil */
 }
 
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 30px 10px;
+  }
+}
 .hero h2 {
   text-decoration: underline;
 }
 
 .up {
   box-shadow: 0 4px 8px rgba(36, 33, 36, 0.4);
-  padding: 10px 40px;
+  padding: 10px;
   margin-top: 20px;
   border-radius: 10px;
+  margin: 10px auto;
+  width: 95%;
 }
 
 .container.dark .up {
@@ -132,6 +173,33 @@
   width: 400px;
 }
 
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 1.8rem;
+
+  }
+  .image-container img {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .canvasImg {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10% 45%;
+
+  }
+
+  .image-container {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+  }
+}
+
 .hover-text {
   position: absolute;
   top: 10px;
@@ -149,6 +217,7 @@
   font-size: 20px;
   pointer-events: none;
   border-radius: 50%;
+  display: none;
 }
 
 .mouse {
@@ -284,8 +353,9 @@
 .about-section {
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(36, 33, 36, 0.4);
-  padding: 10px 40px;
+  padding: 20px;
   border-radius: 10px;
+  margin: 10px;
 }
 
 .container.dark .about-section {
@@ -326,6 +396,25 @@
 .slide-in-right {
   animation: slideInRight 0.6s ease forwards;
 }
+
+.container.dark .carousel-card {
+  background-color: #1f4d85;
+  color: #F8F8FF;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hero-text {
+  flex: 1 1 300px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 
 /* Projects */
 .projects {
@@ -382,6 +471,8 @@
   display: flex;
   gap: 10px;
   margin-top: 15px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-links ul {
