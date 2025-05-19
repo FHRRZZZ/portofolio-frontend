@@ -160,38 +160,13 @@ body {
 }
 
 .image-container img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  max-width: 100%;
+  margin-top: 50px;
+  margin-left: 50px;
   border-radius: 10% 45%;
-  transition: transform 0.3s;
-}
 
-.image-container:hover img {
-  transform: scale(1.05);
-}
-
-.hover-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f3f4f6;
-  color: #1f4d85;
-  padding: 10px;
-  border-radius: 15px;
-  font-size: 18px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.image-container:hover .hover-text {
-  opacity: 1;
-}
-
-.mouse p {
-  font-size: 20px;
 }
 
 .carousel-card img {
