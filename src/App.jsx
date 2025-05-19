@@ -74,7 +74,7 @@ export default function App() {
           <div className="hero-text">
             <div className="up">
               <h2>Hello, I'am Fhrrzz</h2>
-              <p>Frontend Developer | UI/UX Enthusiast</p>
+              <p>Frontend Developer | Backend Developer</p>
             </div>
 
             {/* About dipindah ke sini */}
