@@ -77,7 +77,6 @@ export default function App() {
               <p>Frontend Developer | UI/UX Enthusiast</p>
             </div>
 
-            {/* About dipindah ke sini */}
             <div className="about-section">
               <h3>About Me</h3>
               <p>
@@ -87,15 +86,14 @@ export default function App() {
           </div>
         </div>
         <div className="mouse">
-        <div className="canvasImg image-container">
-          <img
-            src="/Q.png"
-            alt="Profile"
-            className="hero-photo"
-          />
-          <div className="hover-text">sheesshh🥶🥶🥶</div>
-        </div>
-        <p>Letakan mouse pada foto</p>
+          <div className="canvasImg image-container">
+            <img
+              src="/Q.png"
+              alt="Profile"
+              className="hero-photo"
+            />
+            <div className="hover-text">sheesshh🥶🥶🥶</div>
+          </div>
         </div>
       </section>
 
@@ -133,6 +131,5 @@ export default function App() {
         <p>&copy;Fhrrzz. All rights reserved.</p>
       </footer>
     </div>
-    
   );
 }
