@@ -77,6 +77,7 @@ export default function App() {
               <p>Frontend Developer | UI/UX Enthusiast</p>
             </div>
 
+            {/* About dipindah ke sini */}
             <div className="about-section">
               <h3>About Me</h3>
               <p>
@@ -131,5 +132,6 @@ export default function App() {
         <p>&copy;Fhrrzz. All rights reserved.</p>
       </footer>
     </div>
+    
   );
 }
