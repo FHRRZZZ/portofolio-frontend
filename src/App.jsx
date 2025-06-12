@@ -251,6 +251,7 @@ export default function App() {
 
         {/* Profile Image */}
           <div className="relative group w-60 sm:w-72 h-60 sm:h-72 flex-shrink-0">
+            {/* Profile image wrapper */}
             <div className="w-full h-full bg-gradient-to-r from-blue-800 to-blue-500 rounded-[40%_40%_10%_60%] shadow-lg overflow-hidden">
               <img
                 src="/Q.png"
@@ -258,13 +259,20 @@ export default function App() {
                 className="w-full h-full object-cover rounded-[40%_40%_10%_60%]"
               />
             </div>
+
+            {/* Hover overlay */}
             <div className="absolute top-0 left-0 w-full h-full rounded-[40%_40%_10%_60%] bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
 
-            {/* Popup on hover */}
-            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded bg-black text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap select-none z-50">
-              sheesss🥶🥶
+            {/* Fancy popup tooltip */}
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 pointer-events-none">
+              <div className="relative bg-white text-black text-sm font-semibold px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm bg-opacity-80">
+                sheesss🥶🥶
+                {/* Triangle */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+              </div>
             </div>
           </div>
+
 
       </section>
 
@@ -357,7 +365,7 @@ export default function App() {
           darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"
         } transition-colors duration-500`}
       >
-        <p>Made with ❤️ by Fhrrzz 2023</p>
+        <p>Made with ❤️ by Fhrrzz 2025</p>
       </footer>
     </div>
   );
