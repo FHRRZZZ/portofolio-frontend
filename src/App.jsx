@@ -250,16 +250,22 @@ export default function App() {
         </div>
 
         {/* Profile Image */}
-        <div className="relative group w-60 sm:w-72 h-60 sm:h-72 flex-shrink-0">
-          <div className="w-full h-full bg-gradient-to-r from-blue-800 to-blue-500 rounded-[40%_40%_10%_60%] shadow-lg overflow-hidden">
-            <img
-              src="/Q.png"
-              alt="Profile"
-              className="w-full h-full object-cover rounded-[40%_40%_10%_60%]"
-            />
+          <div className="relative group w-60 sm:w-72 h-60 sm:h-72 flex-shrink-0">
+            <div className="w-full h-full bg-gradient-to-r from-blue-800 to-blue-500 rounded-[40%_40%_10%_60%] shadow-lg overflow-hidden">
+              <img
+                src="/Q.png"
+                alt="Profile"
+                className="w-full h-full object-cover rounded-[40%_40%_10%_60%]"
+              />
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full rounded-[40%_40%_10%_60%] bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+
+            {/* Popup on hover */}
+            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded bg-black text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap select-none z-50">
+              sheesss🥶🥶
+            </div>
           </div>
-          <div className="absolute top-0 left-0 w-full h-full rounded-[40%_40%_10%_60%] bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-        </div>
+
       </section>
 
       {/* Contact Me Section */}
@@ -272,6 +278,7 @@ export default function App() {
         <ContactForm darkMode={darkMode} />
       </section>
 
+      <h2 className="text-3xl font-semibold mb-8 text-center">My Projects</h2>
       <section className="flex items-center justify-center">
       <div className="max-w-4xl mx-auto relative flex flex-col items-center">
         <div
@@ -335,7 +342,6 @@ export default function App() {
           darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
         } transition-colors duration-500`}
       >
-        <h2 className="text-3xl font-semibold mb-8 text-center">My Projects</h2>
         <Carousel
           currentIndex={currentIndex}
           projectImages={projectImages}
