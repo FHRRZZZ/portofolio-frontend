@@ -27,10 +27,10 @@ export default function RotatingText() {
   const current = rotatingWords[index];
 
   return (
-    <div className="h-14 sm:h-16 md:h-20 overflow-hidden relative mb-4 ml-0 sm:ml-[-40px] md:ml-[-90px]">
+    <div className="h-10 sm:h-12 md:h-14 flex items-center justify-center overflow-visible relative">
       <h3
-        className={`flex items-center gap-2 absolute transition-all duration-500 ease-in-out ${
-          fade ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 scale-95"
+        className={`flex items-center gap-2 transition-opacity duration-500 ease-in-out ${
+          fade ? "opacity-100" : "opacity-0"
         }`}
       >
         <span className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">

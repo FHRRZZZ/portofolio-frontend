@@ -55,7 +55,6 @@ function ContactForm({ darkMode }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!nama.trim() || !email.trim() || !desc.trim()) return;
-
     const newEntry = { nama, email, desc };
     setData([...data, newEntry]);
     Swal.fire({
@@ -75,8 +74,8 @@ function ContactForm({ darkMode }) {
     Swal.fire("Data berhasil dihapus", "", "success");
   };
 
-  // reusable kelas gradasi teks
-  const textGradientClass = "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
+  const textGradientClass =
+    "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
 
   return (
     <div
@@ -84,7 +83,11 @@ function ContactForm({ darkMode }) {
         darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"
       } transition-colors duration-500`}
     >
-      <h1 className={`text-3xl font-semibold text-center ${darkMode ? "text-white" : textGradientClass}`}>
+      <h1
+        className={`text-3xl font-semibold text-center ${
+          darkMode ? "text-white" : textGradientClass
+        }`}
+      >
         Contact Me
       </h1>
 
@@ -95,7 +98,9 @@ function ContactForm({ darkMode }) {
         }`}
       >
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>Your name:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>
+            Your name:
+          </label>
           <input
             type="text"
             value={nama}
@@ -107,7 +112,11 @@ function ContactForm({ darkMode }) {
             } p-2 rounded-lg border`}
             placeholder="Masukkan nama"
           />
-          <label className={`text-sm mt-4 ${darkMode ? "" : textGradientClass}`}>Your email:</label>
+          <label
+            className={`text-sm mt-4 ${darkMode ? "" : textGradientClass}`}
+          >
+            Your email:
+          </label>
           <input
             type="email"
             value={email}
@@ -122,7 +131,9 @@ function ContactForm({ darkMode }) {
         </div>
 
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>Desc:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>
+            Desc:
+          </label>
           <textarea
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
@@ -144,10 +155,16 @@ function ContactForm({ darkMode }) {
       </button>
 
       <div className="mt-8 max-h-72 overflow-auto">
-        <h2 className={`text-xl font-semibold mb-4 ${darkMode ? "text-white" : textGradientClass}`}>
+        <h2
+          className={`text-xl font-semibold mb-4 ${
+            darkMode ? "text-white" : textGradientClass
+          }`}
+        >
           Data Tersimpan:
         </h2>
-        {data.length === 0 && <p className={darkMode ? "text-gray-300" : ""}>Tidak ada data tersimpan.</p>}
+        {data.length === 0 && (
+          <p className={darkMode ? "text-gray-300" : ""}>Tidak ada data tersimpan.</p>
+        )}
         <ul>
           {data.map((item, index) => (
             <li
@@ -157,13 +174,16 @@ function ContactForm({ darkMode }) {
               }`}
             >
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Nama:</strong> {item.nama}
+                <strong className={darkMode ? "" : textGradientClass}>Nama:</strong>{" "}
+                {item.nama}
               </p>
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Email:</strong> {item.email}
+                <strong className={darkMode ? "" : textGradientClass}>Email:</strong>{" "}
+                {item.email}
               </p>
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Pesan:</strong> {item.desc}
+                <strong className={darkMode ? "" : textGradientClass}>Pesan:</strong>{" "}
+                {item.desc}
               </p>
               <button
                 onClick={() => handleDelete(index)}
@@ -189,7 +209,8 @@ export default function App() {
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1));
 
-  const textGradientClass = "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
+  const textGradientClass =
+    "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
 
   return (
     <div
@@ -197,7 +218,6 @@ export default function App() {
         darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
       } min-h-screen transition-colors duration-500`}
     >
-      {/* Navbar */}
       <header className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-800 shadow-md sticky top-0 z-50">
         <h1 className="text-xl font-bold text-white">Fhrrzz</h1>
         <nav className="mt-2 md:mt-0">
@@ -238,36 +258,40 @@ export default function App() {
           darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
         } transition-colors duration-500`}
       >
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full m">
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h2 className={`text-3xl font-bold mb-4 ml-[-90px] ${textGradientClass}`}>
+        <div className="flex flex-col lg:flex-row items-end justify-center gap-10 w-full px-4">
+          <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col justify-center h-full min-h-[200px] gap-2 px-4 lg:px-0">
+            <h2 className={`text-3xl md:text-4xl font-bold ${textGradientClass}`}>
               {"Hello, I'm Fhrrzz "}
-              <span className="inline-block text-black bg-none">
-                👋
-              </span>
+              <span className="inline-block text-black bg-none">👋</span>
             </h2>
-            <RotatingText textGradientClass={textGradientClass} />
-            <p className={`text-lg leading-relaxed ml-[-90px] ${textGradientClass}`}>
+            <div className="flex items-center justify-center lg:justify-start">
+              <RotatingText />
+            </div>
+            <p className={`text-lg md:text-xl leading-relaxed mt-2 ${textGradientClass}`}>
               Saya seorang developer React Native yang bersemangat membuat aplikasi mobile
               <br />
               dan web yang responsif dan user-friendly.
             </p>
           </div>
 
-          {/* Profile Image (Kanan) */}
-          <div className="relative group w-60 sm:w-72 h-60 sm:h-72 flex-shrink-0">
-            <div className="w-full h-full bg-gradient-to-r from-blue-800 to-blue-500 rounded-[40%_40%_10%_60%] shadow-lg overflow-hidden">
-              <img
-                src="/Q.png"
-                alt="Profile"
-                className="w-full h-full object-cover rounded-[40%_40%_10%_60%]"
-              />
-            </div>
-
+          <div className="relative group w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 flex-shrink-0 rounded-[40%_40%_10%_60%] overflow-visible shadow-lg bg-gradient-to-r from-blue-800 to-blue-500 flex items-center justify-center mx-auto lg:mx-0">
+            <img
+              src="/Q.png"
+              alt="Profile"
+              className="w-full h-full object-cover rounded-[40%_40%_10%_60%]"
+            />
             <div className="absolute top-0 left-0 w-full h-full rounded-[40%_40%_10%_60%] bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 pointer-events-none">
-              <div className="relative bg-white text-black text-sm font-semibold px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm bg-opacity-80">
+            <div
+              className="
+                absolute 
+                bottom-full 
+                left-1/2 
+                transform -translate-x-1/2 -translate-y-2 
+                opacity-0 group-hover:opacity-100 group-hover:translate-y-0
+                transition-all duration-300 z-50 pointer-events-none
+              "
+            >
+              <div className="relative bg-white text-black text-sm font-semibold px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm bg-opacity-80 whitespace-nowrap">
                 sheesss🥶🥶
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
               </div>
@@ -276,7 +300,7 @@ export default function App() {
         </div>
 
         <div className="mt-6">
-          <div className="w-100 h-100 mx-auto">
+          <div className="mx-auto w-48 h-48 sm:w-72 sm:h-72 md:w-[480px] md:h-[480px]">
             <ReactLogo />
           </div>
         </div>
