@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactLogo from "./components/ReactLogo";
 import Carousel from "./components/Carousel";
+import Swal from "sweetalert2";
+import RotatingText from "./components/RotatingText";
 
 const projectImages = [
   {
@@ -37,7 +39,6 @@ function ContactForm({ darkMode }) {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [desc, setDesc] = useState("");
-
   const [data, setData] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem("contactData"));
@@ -57,10 +58,25 @@ function ContactForm({ darkMode }) {
 
     const newEntry = { nama, email, desc };
     setData([...data, newEntry]);
+    Swal.fire({
+      title: "Success",
+      icon: "success",
+      draggable: true,
+    });
     setNama("");
     setEmail("");
     setDesc("");
   };
+
+  const handleDelete = (index) => {
+    const newData = data.filter((_, i) => i !== index);
+    setData(newData);
+    localStorage.setItem("contactData", JSON.stringify(newData));
+    Swal.fire("Data berhasil dihapus", "", "success");
+  };
+
+  // reusable kelas gradasi teks
+  const textGradientClass = "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
 
   return (
     <div
@@ -68,11 +84,7 @@ function ContactForm({ darkMode }) {
         darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"
       } transition-colors duration-500`}
     >
-      <h1
-        className={`text-3xl font-semibold text-center ${
-          darkMode ? "text-white" : "text-blue-800"
-        }`}
-      >
+      <h1 className={`text-3xl font-semibold text-center ${darkMode ? "text-white" : textGradientClass}`}>
         Contact Me
       </h1>
 
@@ -83,7 +95,7 @@ function ContactForm({ darkMode }) {
         }`}
       >
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className="text-sm">Your name:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>Your name:</label>
           <input
             type="text"
             value={nama}
@@ -95,7 +107,7 @@ function ContactForm({ darkMode }) {
             } p-2 rounded-lg border`}
             placeholder="Masukkan nama"
           />
-          <label className="text-sm mt-4">Your email:</label>
+          <label className={`text-sm mt-4 ${darkMode ? "" : textGradientClass}`}>Your email:</label>
           <input
             type="email"
             value={email}
@@ -110,7 +122,7 @@ function ContactForm({ darkMode }) {
         </div>
 
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className="text-sm">Desc:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>Desc:</label>
           <textarea
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
@@ -132,8 +144,10 @@ function ContactForm({ darkMode }) {
       </button>
 
       <div className="mt-8 max-h-72 overflow-auto">
-        <h2 className="text-xl font-semibold mb-4">Data Tersimpan:</h2>
-        {data.length === 0 && <p>Tidak ada data tersimpan.</p>}
+        <h2 className={`text-xl font-semibold mb-4 ${darkMode ? "text-white" : textGradientClass}`}>
+          Data Tersimpan:
+        </h2>
+        {data.length === 0 && <p className={darkMode ? "text-gray-300" : ""}>Tidak ada data tersimpan.</p>}
         <ul>
           {data.map((item, index) => (
             <li
@@ -143,14 +157,20 @@ function ContactForm({ darkMode }) {
               }`}
             >
               <p>
-                <strong>Nama:</strong> {item.nama}
+                <strong className={darkMode ? "" : textGradientClass}>Nama:</strong> {item.nama}
               </p>
               <p>
-                <strong>Email:</strong> {item.email}
+                <strong className={darkMode ? "" : textGradientClass}>Email:</strong> {item.email}
               </p>
               <p>
-                <strong>Pesan:</strong> {item.desc}
+                <strong className={darkMode ? "" : textGradientClass}>Pesan:</strong> {item.desc}
               </p>
+              <button
+                onClick={() => handleDelete(index)}
+                className="mt-2 px-4 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition duration-300"
+              >
+                Hapus
+              </button>
             </li>
           ))}
         </ul>
@@ -168,6 +188,8 @@ export default function App() {
     setCurrentIndex((prev) => (prev === projectImages.length - 1 ? 0 : prev + 1));
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1));
+
+  const textGradientClass = "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
 
   return (
     <div
@@ -210,48 +232,30 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Hero / About */}
       <section
         id="hero"
-        className={`flex flex-col lg:flex-row justify-center items-center px-4 py-10 ${
+        className={`flex flex-col items-center px-4 py-10 gap-10 ${
           darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
         } transition-colors duration-500`}
       >
-        <div className="w-full lg:w-2/3 flex flex-col lg:flex-row items-center lg:items-start gap-6">
-          {/* React Logo */}
-          <div className="flex justify-center lg:justify-start w-full lg:w-auto">
-            <div className="w-30 h-28 flex-shrink-0">
-              <ReactLogo />
-            </div>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full m">
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <h2 className={`text-3xl font-bold mb-4 ml-[-90px] ${textGradientClass}`}>
+              {"Hello, I'm Fhrrzz "}
+              <span className="inline-block text-black bg-none">
+                👋
+              </span>
+            </h2>
+            <RotatingText textGradientClass={textGradientClass} />
+            <p className={`text-lg leading-relaxed ml-[-90px] ${textGradientClass}`}>
+              Saya seorang developer React Native yang bersemangat membuat aplikasi mobile
+              <br />
+              dan web yang responsif dan user-friendly.
+            </p>
           </div>
 
-          {/* About Me Box */}
-          <div className="w-full max-w-md">
-            <div
-              className={`p-4 shadow-lg rounded-md transition-all hover:scale-105 duration-300 ${
-                darkMode ? "bg-blue-900" : "bg-blue-100"
-              }`}
-            >
-              <h2 className="text-2xl font-semibold underline">{`Hello, I'm Fhrrzz`}</h2>
-              <p className="text-lg">{`Frontend Developer | Backend Developer`}</p>
-            </div>
-            <div
-              className={`mt-2 p-4 rounded-lg shadow-lg transition-all hover:scale-105 duration-300 ${
-                darkMode ? "bg-blue-800" : "bg-blue-100"
-              }`}
-            >
-              <h3 className="text-lg font-semibold mb-2">About Me</h3>
-              <p>
-                Saya seorang developer React Native yang bersemangat membuat aplikasi
-                mobile yang responsif dan user-friendly.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Profile Image */}
+          {/* Profile Image (Kanan) */}
           <div className="relative group w-60 sm:w-72 h-60 sm:h-72 flex-shrink-0">
-            {/* Profile image wrapper */}
             <div className="w-full h-full bg-gradient-to-r from-blue-800 to-blue-500 rounded-[40%_40%_10%_60%] shadow-lg overflow-hidden">
               <img
                 src="/Q.png"
@@ -260,90 +264,24 @@ export default function App() {
               />
             </div>
 
-            {/* Hover overlay */}
             <div className="absolute top-0 left-0 w-full h-full rounded-[40%_40%_10%_60%] bg-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
 
-            {/* Fancy popup tooltip */}
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 pointer-events-none">
               <div className="relative bg-white text-black text-sm font-semibold px-4 py-2 rounded-lg shadow-lg backdrop-blur-sm bg-opacity-80">
                 sheesss🥶🥶
-                {/* Triangle */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
               </div>
             </div>
           </div>
+        </div>
 
-
-      </section>
-
-      {/* Contact Me Section */}
-      <section
-        id="contact"
-        className={`flex justify-center items-center py-10 px-4 ${
-          darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
-        } transition-colors duration-500`}
-      >
-        <ContactForm darkMode={darkMode} />
-      </section>
-
-      <h2 className="text-3xl font-semibold mb-8 text-center">My Projects</h2>
-      <section className="flex items-center justify-center">
-      <div className="max-w-4xl mx-auto relative flex flex-col items-center">
-        <div
-          className={`w-full rounded-lg overflow-hidden shadow-lg transition-colors duration-500 ${
-            darkMode ? "bg-gray-800" : "bg-gray-100"
-          }`}
-        >
-          <img
-            src={projectImages[currentIndex].img}
-            alt={projectImages[currentIndex].title}
-            className="w-full h-64 object-cover"
-          />
-          <div className="p-6">
-            <h3 className="text-xl font-semibold mb-2">{projectImages[currentIndex].title}</h3>
-            <p className="mb-4">{projectImages[currentIndex].desc}</p>
-            <a
-              href={projectImages[currentIndex].link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-block px-4 py-2 rounded ${
-                darkMode
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "bg-blue-500 text-white hover:bg-blue-600"
-              } transition`}
-            >
-              See Project
-            </a>
+        <div className="mt-6">
+          <div className="w-100 h-100 mx-auto">
+            <ReactLogo />
           </div>
         </div>
-
-        {/* Navigation Buttons */}
-        <div className="flex gap-6 mt-6">
-          <button
-            onClick={prevSlide}
-            className={`px-4 py-2 rounded border ${
-              darkMode
-                ? "border-gray-300 text-gray-300 hover:bg-gray-700"
-                : "border-gray-600 text-gray-600 hover:bg-gray-200"
-            } transition`}
-          >
-            Prev
-          </button>
-          <button
-            onClick={nextSlide}
-            className={`px-4 py-2 rounded border ${
-              darkMode
-                ? "border-gray-300 text-gray-300 hover:bg-gray-700"
-                : "border-gray-600 text-gray-600 hover:bg-gray-200"
-            } transition`}
-          >
-            Next
-          </button>
-        </div>
-      </div>
       </section>
 
-      {/* Projects Carousel */}
       <section
         id="projects"
         className={`py-10 px-4 ${
@@ -359,13 +297,70 @@ export default function App() {
         />
       </section>
 
-      {/* Footer */}
+      <section
+        id="projects"
+        className={`py-12 px-6 ${
+          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        } transition-colors duration-500`}
+      >
+        <h2 className={`text-3xl font-bold text-center mb-10 ${textGradientClass}`}>
+          My Projects
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {projectImages.map((project, index) => (
+            <div
+              key={index}
+              className={`rounded-xl overflow-hidden shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ${
+                darkMode ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <img
+                src={project.img}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-5 flex flex-col justify-between h-[200px]">
+                <div>
+                  <h3 className={`text-xl font-semibold mb-2 ${textGradientClass}`}>
+                    {project.title}
+                  </h3>
+                  <p className={textGradientClass}>{project.desc}</p>
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold ${
+                    darkMode
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-blue-500 text-white hover:bg-blue-600"
+                  } transition`}
+                >
+                  <span className="text-black">🔗</span>
+                  <span className={`${textGradientClass} text-white`}>Lihat Project</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        className={`flex justify-center items-center py-10 px-4 ${
+          darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+        } transition-colors duration-500`}
+      >
+        <ContactForm darkMode={darkMode} />
+      </section>
+
       <footer
         className={`py-4 px-6 text-center ${
           darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-200 text-gray-700"
         } transition-colors duration-500`}
       >
-        <p>Made with ❤️ by Fhrrzz 2025</p>
+        <p className={`underline ${textGradientClass}`}>Made with ❤️ by Fhrrzz 2025</p>
       </footer>
     </div>
   );
