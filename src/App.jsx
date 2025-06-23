@@ -35,7 +35,7 @@ const projectImages = [
   },
 ];
 
-function ContactForm({ darkMode }) {
+function ContactForm({ darkMode: isDarkMode }) {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [desc, setDesc] = useState("");
@@ -70,7 +70,6 @@ function ContactForm({ darkMode }) {
   const handleDelete = (index) => {
     const newData = data.filter((_, i) => i !== index);
     setData(newData);
-    localStorage.setItem("contactData", JSON.stringify(newData));
     Swal.fire("Data berhasil dihapus", "", "success");
   };
 
@@ -80,12 +79,12 @@ function ContactForm({ darkMode }) {
   return (
     <div
       className={`flex flex-col gap-4 p-6 md:p-12 lg:p-20 rounded-lg shadow-md w-full max-w-4xl ${
-        darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"
+        isDarkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"
       } transition-colors duration-500`}
     >
       <h1
         className={`text-3xl font-semibold text-center ${
-          darkMode ? "text-white" : textGradientClass
+          isDarkMode ? "text-white" : textGradientClass
         }`}
       >
         Contact Me
@@ -94,11 +93,11 @@ function ContactForm({ darkMode }) {
       <form
         onSubmit={handleSubmit}
         className={`flex flex-col md:flex-row gap-4 p-6 rounded-lg ${
-          darkMode ? "bg-gray-700" : "bg-gray-200"
+          isDarkMode ? "bg-gray-700" : "bg-gray-200"
         }`}
       >
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>
+          <label className={`text-sm ${isDarkMode ? "" : textGradientClass}`}>
             Your name:
           </label>
           <input
@@ -106,15 +105,13 @@ function ContactForm({ darkMode }) {
             value={nama}
             onChange={(e) => setNama(e.target.value)}
             className={`${
-              darkMode
+              isDarkMode
                 ? "bg-gray-700 border-blue-400 text-gray-200"
                 : "bg-gray-100 border-blue-600 text-gray-900"
             } p-2 rounded-lg border`}
             placeholder="Masukkan nama"
           />
-          <label
-            className={`text-sm mt-4 ${darkMode ? "" : textGradientClass}`}
-          >
+          <label className={`text-sm mt-4 ${isDarkMode ? "" : textGradientClass}`}>
             Your email:
           </label>
           <input
@@ -122,7 +119,7 @@ function ContactForm({ darkMode }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={`${
-              darkMode
+              isDarkMode
                 ? "bg-gray-700 border-blue-400 text-gray-200"
                 : "bg-gray-100 border-blue-600 text-gray-900"
             } p-2 rounded-lg border`}
@@ -131,14 +128,14 @@ function ContactForm({ darkMode }) {
         </div>
 
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradientClass}`}>
+          <label className={`text-sm ${isDarkMode ? "" : textGradientClass}`}>
             Desc:
           </label>
           <textarea
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             className={`${
-              darkMode
+              isDarkMode
                 ? "bg-gray-700 border-blue-400 text-gray-200"
                 : "bg-gray-100 border-blue-600 text-gray-900"
             } p-2 rounded-lg h-full min-h-[100px] border`}
@@ -157,32 +154,34 @@ function ContactForm({ darkMode }) {
       <div className="mt-8 max-h-72 overflow-auto">
         <h2
           className={`text-xl font-semibold mb-4 ${
-            darkMode ? "text-white" : textGradientClass
+            isDarkMode ? "text-white" : textGradientClass
           }`}
         >
           Data Tersimpan:
         </h2>
         {data.length === 0 && (
-          <p className={darkMode ? "text-gray-300" : ""}>Tidak ada data tersimpan.</p>
+          <p className={isDarkMode ? "text-gray-300" : ""}>
+            Tidak ada data tersimpan.
+          </p>
         )}
         <ul>
           {data.map((item, index) => (
             <li
               key={index}
               className={`mb-4 p-3 rounded shadow-sm ${
-                darkMode ? "bg-gray-700" : "bg-gray-100"
+                isDarkMode ? "bg-gray-700" : "bg-gray-100"
               }`}
             >
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Nama:</strong>{" "}
+                <strong className={isDarkMode ? "" : textGradientClass}>Nama:</strong>{" "}
                 {item.nama}
               </p>
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Email:</strong>{" "}
+                <strong className={isDarkMode ? "" : textGradientClass}>Email:</strong>{" "}
                 {item.email}
               </p>
               <p>
-                <strong className={darkMode ? "" : textGradientClass}>Pesan:</strong>{" "}
+                <strong className={isDarkMode ? "" : textGradientClass}>Pesan:</strong>{" "}
                 {item.desc}
               </p>
               <button
@@ -367,6 +366,9 @@ export default function App() {
               </div>
             </div>
           ))}
+        </div>
+        <div>
+          
         </div>
       </section>
 
