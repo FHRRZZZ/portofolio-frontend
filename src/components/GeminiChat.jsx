@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Bot, Send } from "lucide-react"; // Icon opsional
+import { Bot, Send } from "lucide-react";
 
 const GeminiChat = () => {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const backendURL = process.env.REACT_APP_GEMINI_BACKEND_URL;
 
   const handleAsk = async () => {
     if (!prompt.trim()) return;
@@ -13,10 +15,7 @@ const GeminiChat = () => {
     setResponse("");
 
     try {
-      const res = await axios.post(
-        "https://portofolio-production-0e38.up.railway.app/", // Ganti ini dengan domain Railway-mu
-        { prompt }
-      );
+      const res = await axios.post(backendURL, { prompt });
       setResponse(res.data.reply || "Tidak ada balasan.");
     } catch (err) {
       setResponse("Terjadi kesalahan saat menghubungi server.");
