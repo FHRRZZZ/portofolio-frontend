@@ -3,6 +3,7 @@ import ReactLogo from "./components/ReactLogo";
 import Carousel from "./components/Carousel";
 import Swal from "sweetalert2";
 import RotatingText from "./components/RotatingText";
+import GeminiChat from "./components/GeminiChat";
 
 const projectImages = [
   {
@@ -241,6 +242,11 @@ export default function App() {
                 Project
               </a>
             </li>
+            <li>
+              <a href="#AI" className="text-white hover:underline">
+                Ask AI
+              </a>
+            </li>
             <button
               onClick={toggleDarkMode}
               className="ml-2 px-3 py-1 border border-white text-white rounded hover:bg-white hover:text-black"
@@ -306,7 +312,7 @@ export default function App() {
       </section>
 
       <section
-        id="projects"
+        id="skills"
         className={`py-10 px-4 ${
           darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
         } transition-colors duration-500`}
@@ -380,6 +386,16 @@ export default function App() {
       >
         <ContactForm darkMode={darkMode} />
       </section>
+
+      <section
+        id="AI"
+        className={`py-10 px-4 ${
+          darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+        } transition-colors duration-500`}
+      >
+        <GeminiChat darkMode={darkMode} />
+      </section>
+
 
       <footer
         className={`py-4 px-6 text-center ${
