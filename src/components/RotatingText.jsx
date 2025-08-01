@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Code2, Smartphone, Paintbrush, Laptop2, Atom, } from "lucide-react";
 
 const rotatingWords = [
-  { text: "Frontend Developer", icon: "👨‍💻" },
-  { text: "React Enthusiast", icon: "⚛️" },
-  { text: "Mobile App Creator", icon: "📱" },
-  { text: "Tailwind Designer", icon: "🎨" },
-  { text: "Code Lover", icon: "💻" },
+  { text: "Frontend Developer", icon: <Laptop2 /> },
+  { text: "React Enthusiast", icon: <Atom /> },
+  { text: "Mobile App Creator", icon: <Smartphone /> },
+  { text: "Tailwind Designer", icon: <Paintbrush /> },
+  { text: "Code Lover", icon: <Code2 /> },
 ];
 
 export default function RotatingText() {
@@ -36,7 +37,9 @@ export default function RotatingText() {
         <span className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
           {current.text}
         </span>
-        <span className="text-xl sm:text-2xl md:text-3xl">{current.icon}</span>
+        <span className="text-xl sm:text-2xl md:text-3xl text-blue-500">
+          {current.icon}
+        </span>
       </h3>
     </div>
   );
