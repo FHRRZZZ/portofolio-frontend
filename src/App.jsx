@@ -9,12 +9,12 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 
 const projectImages = [
-  { id: 1, title: "Portfolio Website", desc: "Dibuat Dengan React TypeScript Dan Tailwind", img: "/tsx.png", link: "#!" },
-  { id: 2, title: "Laravel", desc: "E-commerce dengan framework laravel dan tailwind", img: "/laravel.png", link: "#!" },
-  { id: 3, title: "Game Javascript", desc: "Projek hanya untuk mengasah otak", img: "/game.png", link: "#!" },
-  { id: 4, title: "Crud Flask", desc: "Hanya menggunakan Framework Flask untuk backend", img: "/py.png", link: "#!" },
-  { id: 5, title: "Portofolio Kelas", desc: "membuat portofolio dengan tailwind", img: "/1.png", link: "#!" },
-  { id: 6, title: "Presensi kelas", desc: "Presensi kelas hanya menggunakan local Storage", img: "/2.png", link: "#!" },
+  { id: 1, title: "Website Portfolio", desc: "Created with React, TypeScript, and Tailwind", img: "/tsx.png", link: "#!" },
+  { id: 2, title: "Laravel", desc: "E-commerce with Laravel and Tailwind framework", img: "/laravel.png", link: "#!" },
+  { id: 3, title: "JavaScript Game", desc: "A project to sharpen the brain", img: "/game.png", link: "#!" },
+  { id: 4, title: "Flask CRUD", desc: "Backend using only Flask framework", img: "/py.png", link: "#!" },
+  { id: 5, title: "Class Portfolio", desc: "Created a portfolio with Tailwind", img: "/1.png", link: "#!" },
+  { id: 6, title: "Class Attendance", desc: "Class attendance using only local storage", img: "/2.png", link: "#!" },
 ];
 
 export default function App() {
@@ -83,19 +83,23 @@ export default function App() {
 
   return (
     <div className={`flex flex-col min-h-screen ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"} transition-colors duration-500`}>
-      <header className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-800 shadow-md sticky top-0 z-50">
+      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-800 shadow-md sticky top-0 z-50">
         <h1 className="text-xl font-bold text-white">Fhrrzz</h1>
-        <nav className="mt-2 md:mt-0">
-          <ul className="flex flex-wrap justify-center gap-4 items-center">
-            <li><a href="#hero" className="text-white hover:underline">Beranda</a></li>
-            <li><a href="#contact" className="text-white hover:underline">Hubungi</a></li>
-            <li><a href="#skills" className="text-white hover:underline">Skill</a></li>
-            <li><a href="#projects" className="text-white hover:underline">Projek</a></li>
-            <button onClick={toggleDarkMode} className="w-16 h-8 flex items-center bg-gray-300 dark:bg-yellow-400 border border-gray-400 dark:border-yellow-300 rounded-full p-1 transition-all duration-500 relative">
-              <div className={`w-6 h-6 rounded-full bg-white shadow-md transform flex items-center justify-center text-sm transition-all duration-300 ${darkMode ? "translate-x-8" : "translate-x-0"}`}>{darkMode ? "☀️" : "🌙"}</div>
-            </button>
+        <nav className="flex-1">
+          <ul className="flex justify-center gap-6 items-center">
+            <li><a href="#hero" className="text-white hover:underline">Home</a></li>
+            <li><a href="#contact" className="text-white hover:underline">Comtact</a></li>
+            <li><a href="#skills" className="text-white hover:underline">Skills</a></li>
+            <li><a href="#projects" className="text-white hover:underline">Projects</a></li>
           </ul>
         </nav>
+        <div>
+          <button onClick={toggleDarkMode} className="w-16 h-8 flex items-center bg-gray-300 dark:bg-yellow-400 border border-gray-400 dark:border-yellow-300 rounded-full p-1 transition-all duration-500 relative">
+            <div className={`w-6 h-6 rounded-full bg-white shadow-md transform flex items-center justify-center text-sm transition-all duration-300 ${darkMode ? "translate-x-8" : "translate-x-0"}`}>
+              {darkMode ? "☀️" : "🌙"}
+            </div>
+          </button>
+        </div>
       </header>
       <main className="flex-grow">
         <section id="hero" className={`flex flex-row flex-wrap justify-center items-center px-4 py-10 gap-10 ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"} transition-colors duration-500`}>
@@ -105,7 +109,7 @@ export default function App() {
               <span className="text-3xl text-transparent bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text">!!!</span>
             </h2>
             <div className="flex justify-center lg:justify-start"><RotatingText /></div>
-            <p className={`text-lg md:text-xl mt-2 ${textGradientClass}`}>Saya seorang developer React Native yang bersemangat membuat aplikasi mobile dan web yang responsif dan user-friendly.</p>
+            <p className={`text-lg md:text-xl mt-2 ${textGradientClass}`}>I am a React Native developer passionate about building responsive and user-friendly mobile and web applications.</p>
           </div>
           <div className="relative group w-60 md:w-72 h-60 md:h-72 rounded-[40%_40%_10%_60%] shadow-lg bg-gradient-to-r from-blue-800 to-blue-500 flex items-center justify-center" data-aos="fade-left">
             <img src="/Q.png" alt="Profile" className="w-full h-full object-cover rounded-[40%_40%_10%_60%]" />
@@ -138,7 +142,7 @@ export default function App() {
                     <h3 className={`text-xl font-semibold mb-2 ${textGradientClass}`}>{project.title}</h3>
                     <p className={textGradientClass}>{project.desc}</p>
                   </div>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className={`mt-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold ${darkMode ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-blue-500 text-white hover:bg-blue-600"} transition`}>🔗 <span className="text-white">Lihat Project</span></a>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className={`mt-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold ${darkMode ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-blue-500 text-white hover:bg-blue-600"} transition`}>🔗 <span className="text-white">View Projects</span></a>
                 </div>
               </div>
             ))}
@@ -149,7 +153,7 @@ export default function App() {
           <div className="w-full max-w-4xl">
             <h2 className="text-4xl font-extrabold text-center mb-10 flex items-center justify-center gap-2">
               <span className="text-3xl">📬</span>
-              <span className={darkMode ? "text-white" : textGradientClass}>Hubungi Saya</span>
+              <span className={darkMode ? "text-white" : textGradientClass}>Contact me</span>
             </h2>
             <div className={`p-8 rounded-3xl shadow-2xl border ${darkMode ? "bg-gray-800 border-blue-600" : "bg-gray-50 border-blue-300"}`}>
               <ContactForm darkMode={darkMode} />

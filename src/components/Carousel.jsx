@@ -19,7 +19,7 @@ const Carousel = ({ darkMode }) => {
 
   return (
     <section id="Skills" className={`mt-8 rounded-lg shadow-lg p-6 transition-colors duration-500 ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"}`}>
-      <h1 className="text-center text-3xl font-semibold mb-6 text-blue-500">Language & Framework</h1>
+      <h1 className="text-center text-3xl font-semibold mb-6 text-blue-500">Language, Library & Framework</h1>
 
       <div className="flex flex-col gap-6 overflow-hidden">
         {/* Carousel 1 */}
@@ -31,8 +31,6 @@ const Carousel = ({ darkMode }) => {
             </div>
           ))}
         </div>
-
-        {/* Carousel 2 */}
         <div className={`flex gap-12 animate-scrollLeft whitespace-nowrap rounded-lg p-4 shadow-inner transition-colors duration-300 ${darkMode ? "bg-gray-800" : "bg-gray-100"}`} style={{ animationDuration: "20s", willChange: "transform" }}>
           {[...carouselItems2, ...carouselItems2].map(({ name, src }, i) => (
             <div key={name + i} className={`min-w-[150px] max-w-[180px] p-6 rounded-xl shadow-md flex flex-col items-center justify-center transition-colors duration-300 ${darkMode ? "bg-blue-900 text-gray-100" : "bg-blue-100 text-gray-900"}`}>

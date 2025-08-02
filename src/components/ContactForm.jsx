@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 
 const ContactForm = ({ darkMode }) => {
-  const [nama, setNama] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [desc, setDesc] = useState("");
+  const [message, setMessage] = useState("");
   const [data, setData] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem("contactData"));
@@ -20,23 +20,23 @@ const ContactForm = ({ darkMode }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!nama.trim() || !email.trim() || !desc.trim()) return;
-    const newEntry = { nama, email, desc };
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+    const newEntry = { name, email, message };
     setData([...data, newEntry]);
     Swal.fire({
-      title: "Sukses!",
-      text: "Pesan berhasil dikirim.",
+      title: "Success!",
+      text: "Message sent successfully.",
       icon: "success",
     });
-    setNama("");
+    setName("");
     setEmail("");
-    setDesc("");
+    setMessage("");
   };
 
   const handleDelete = (index) => {
     const newData = data.filter((_, i) => i !== index);
     setData(newData);
-    Swal.fire("Data berhasil dihapus", "", "success");
+    Swal.fire("Data deleted successfully", "", "success");
   };
 
   const textGradient = "bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent";
@@ -54,12 +54,12 @@ const ContactForm = ({ darkMode }) => {
         }`}
       >
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradient}`}>Nama:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradient}`}>Name:</label>
           <input
             type="text"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            placeholder="Masukkan nama"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
             className={`p-2 rounded-lg border ${
               darkMode
                 ? "bg-gray-700 border-blue-400 text-white"
@@ -71,7 +71,7 @@ const ContactForm = ({ darkMode }) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Masukkan email"
+            placeholder="Enter your email"
             className={`p-2 rounded-lg border ${
               darkMode
                 ? "bg-gray-700 border-blue-400 text-white"
@@ -81,11 +81,11 @@ const ContactForm = ({ darkMode }) => {
         </div>
 
         <div className="flex flex-col gap-2 w-full md:w-1/2">
-          <label className={`text-sm ${darkMode ? "" : textGradient}`}>Pesan:</label>
+          <label className={`text-sm ${darkMode ? "" : textGradient}`}>Message:</label>
           <textarea
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder="Tulis pesan Anda..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Write your message..."
             className={`p-2 rounded-lg border min-h-[100px] ${
               darkMode
                 ? "bg-gray-700 border-blue-400 text-white"
@@ -99,16 +99,16 @@ const ContactForm = ({ darkMode }) => {
         onClick={handleSubmit}
         className="self-center px-6 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition duration-300"
       >
-        Kirim
+        Send
       </button>
 
       <div className="mt-8 max-h-72 overflow-auto">
         <h2 className={`text-xl font-semibold mb-4 ${darkMode ? "" : textGradient}`}>
-          Data Terkirim:
+          Sent Data:
         </h2>
         {data.length === 0 && (
           <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-            Belum ada data yang tersimpan.
+            No data stored yet.
           </p>
         )}
         <ul>
@@ -119,14 +119,14 @@ const ContactForm = ({ darkMode }) => {
                 darkMode ? "bg-gray-700" : "bg-gray-100"
               }`}
             >
-              <p><strong>Nama:</strong> {item.nama}</p>
+              <p><strong>Name:</strong> {item.name}</p>
               <p><strong>Email:</strong> {item.email}</p>
-              <p><strong>Pesan:</strong> {item.desc}</p>
+              <p><strong>Message:</strong> {item.message}</p>
               <button
                 onClick={() => handleDelete(index)}
                 className="mt-2 px-4 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition duration-300"
               >
-                Hapus
+                Delete
               </button>
             </li>
           ))}
